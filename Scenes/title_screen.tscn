@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cgfefi7ur57h2"]
+
+[ext_resource type="FontFile" uid="uid://8fkv5il3p2sd" path="res://Assets/Font/VT323-Regular.ttf" id="1_klylv"]
+[ext_resource type="Script" uid="uid://b4jubkgeydh35" path="res://Scripts/title_screen.gd" id="1_p3fck"]
+[ext_resource type="Script" uid="uid://dja7n1v7jbwsg" path="res://Scripts/flash_label.gd" id="3_4gxqj"]
+
+[node name="TitleScreen" type="Control" unique_id=154368887]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p3fck")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=991621124]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Title" type="Label" parent="MarginContainer" unique_id=1263580744]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_klylv")
+theme_override_font_sizes/font_size = 50
+text = "ULTIMATE 
+ROCK PAPER SCISSOR"
+horizontal_alignment = 1
+
+[node name="Instruction" type="Label" parent="MarginContainer" unique_id=1169495033]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_klylv")
+theme_override_font_sizes/font_size = 35
+text = "PRESS ENTER TO START"
+horizontal_alignment = 1
+script = ExtResource("3_4gxqj")
+
+[node name="BlinkTimer" type="Timer" parent="." unique_id=1335544306]
+
+[connection signal="timeout" from="BlinkTimer" to="MarginContainer/Instruction" method="_on_blink_timer_timeout"]
