@@ -1,5 +1,17 @@
 [gd_scene format=3 uid="uid://80des27svonw"]
 
+[ext_resource type="Script" uid="uid://cqa1acq1nflh3" path="res://Scripts/character_screen.gd" id="1_bh1ck"]
+[ext_resource type="Texture2D" uid="uid://c04rv5urmb3la" path="res://Assets/Sprites/kenney_ui-pack-space-expansion/PNG/Extra/Default/bar_shadow_round_large.png" id="1_s1r72"]
+[ext_resource type="Texture2D" uid="uid://c8stoftlpiyg8" path="res://Assets/Sprites/kenney_ui-pack-space-expansion/PNG/Blue/Double/bar_round_gloss_large.png" id="2_0qsgt"]
+[ext_resource type="Script" uid="uid://bf3p7x2wkf6x0" path="res://Scripts/progress_bar.gd" id="3_0qsgt"]
+[ext_resource type="Script" uid="uid://c16me5bjr25tj" path="res://Scripts/timer_count.gd" id="5_hbefg"]
+[ext_resource type="PackedScene" uid="uid://bq7xsl1nhyql3" path="res://Prefabs/char_display.tscn" id="6_v817j"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_s1r72"]
+color = Color(1, 1, 1, 1)
+thickness = 8
+vertical = true
+
 [node name="CharacterScreen" type="Control" unique_id=396143955]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +19,181 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bh1ck")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=951489893]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=866040379]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=485810348]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="TimerPlayer1" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1599294405]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("1_s1r72")
+texture_progress = ExtResource("2_0qsgt")
+script = ExtResource("3_0qsgt")
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=619243988]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_s1r72")
+
+[node name="TimerCount" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1185380886]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "10"
+script = ExtResource("5_hbefg")
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2109271253]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_s1r72")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1576916735]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_s1r72")
+texture_progress = ExtResource("2_0qsgt")
+script = ExtResource("3_0qsgt")
+
+[node name="CharSelectorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=505265725]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Player1Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer" unique_id=1117434928]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=1721677092]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/MarginContainer" unique_id=278124911]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Char1Display" type="TextureRect" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/MarginContainer" unique_id=489108863]
+visible = false
+layout_mode = 2
+
+[node name="RockContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=433833362]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/RockContainer" unique_id=2053844679]
+layout_mode = 2
+
+[node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/RockContainer/MarginContainer" unique_id=1668750260 instance=ExtResource("6_v817j")]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+button_text = "G"
+
+[node name="PaperContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=298088702]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/PaperContainer" unique_id=238338095]
+layout_mode = 2
+theme_override_constants/margin_left = 75
+
+[node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/PaperContainer/MarginContainer" unique_id=1804068049 instance=ExtResource("6_v817j")]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+button_text = "H"
+
+[node name="ScissorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=1304870902]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/ScissorContainer" unique_id=661525924]
+layout_mode = 2
+theme_override_constants/margin_left = 150
+
+[node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/ScissorContainer/MarginContainer" unique_id=1750113989 instance=ExtResource("6_v817j")]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+button_text = "J"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/CharSelectorContainer" unique_id=310045132]
+layout_mode = 2
+
+[node name="Player2Container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer" unique_id=2048563417]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container" unique_id=1653421116]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/MarginContainer" unique_id=1847249880]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Char2Display" type="TextureRect" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/MarginContainer" unique_id=2074320737]
+visible = false
+layout_mode = 2
+
+[node name="RockContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container" unique_id=1373853569]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/RockContainer" unique_id=140186074]
+layout_mode = 2
+
+[node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/RockContainer/MarginContainer" unique_id=1327810857 instance=ExtResource("6_v817j")]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+button_text = "3"
+
+[node name="PaperContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container" unique_id=2092877998]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/PaperContainer" unique_id=1893169163]
+layout_mode = 2
+theme_override_constants/margin_right = 75
+
+[node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/PaperContainer/MarginContainer" unique_id=937280494 instance=ExtResource("6_v817j")]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+button_text = "2"
+
+[node name="ScissorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container" unique_id=1614317248]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/ScissorContainer" unique_id=1170341633]
+layout_mode = 2
+theme_override_constants/margin_right = 150
+
+[node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/ScissorContainer/MarginContainer" unique_id=816119964 instance=ExtResource("6_v817j")]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+button_text = "1"
+
+[node name="Timer" type="Timer" parent="." unique_id=182637759]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

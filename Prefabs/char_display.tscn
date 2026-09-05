@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bq7xsl1nhyql3"]
+
+[ext_resource type="Script" uid="uid://dflssn32f2ro2" path="res://Scripts/action_display.gd" id="1_fj8tn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvnlb"]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cc37w"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="CharDisplay" type="Control" unique_id=1668750260]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fj8tn")
+
+[node name="Panel" type="Panel" parent="." unique_id=1854172788]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 74.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvnlb")
+
+[node name="Panel2" type="Panel" parent="." unique_id=1501058796]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 53.0
+offset_right = 74.0
+offset_bottom = 86.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cc37w")
+
+[node name="Label" type="Label" parent="Panel2" unique_id=464393805]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 71.0
+offset_bottom = 30.0
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
