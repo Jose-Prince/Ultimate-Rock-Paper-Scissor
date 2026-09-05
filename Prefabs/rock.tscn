@@ -43,7 +43,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cuwfx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -60,7 +60,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jpug6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run_right",
 "speed": 5.0
 }]
@@ -141,7 +141,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_31ctl")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -155,7 +155,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yfk6v")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -169,7 +169,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3m07t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"kick",
 "speed": 5.0
 }, {
@@ -183,7 +183,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b5cpp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"punch",
 "speed": 5.0
 }, {
@@ -200,13 +200,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rv4va")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run_right",
 "speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
-size = Vector2(14, 10)
+size = Vector2(14, 11)
 
 [node name="Rock" type="CharacterBody2D" unique_id=1900151938]
 script = ExtResource("1_42w03")
@@ -226,5 +226,5 @@ offset_bottom = 22.0
 color = Color(1, 0, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=90828763]
-position = Vector2(0, 2)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_cc37w")

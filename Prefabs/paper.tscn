@@ -79,7 +79,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uwik3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -93,7 +93,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xjyup")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -107,7 +107,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0jygf")
 }],
-"loop": true,
+"loop": 1,
 "name": &"kick",
 "speed": 5.0
 }, {
@@ -121,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0ok4l")
 }],
-"loop": true,
+"loop": 1,
 "name": &"punch",
 "speed": 5.0
 }, {
@@ -138,7 +138,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lpt25")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run_right",
 "speed": 5.0
 }]
@@ -219,7 +219,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3nhyf")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -233,7 +233,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xpwmt")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -247,7 +247,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fm53t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"kick",
 "speed": 5.0
 }, {
@@ -261,7 +261,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sutg5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"punch",
 "speed": 5.0
 }, {
@@ -278,13 +278,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4x2js")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run_right",
 "speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
-size = Vector2(13, 15)
+size = Vector2(13, 13)
 
 [node name="Paper" type="CharacterBody2D" unique_id=1900151938]
 script = ExtResource("1_80fc8")
@@ -304,5 +304,5 @@ offset_bottom = 22.0
 color = Color(1, 1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=90828763]
-position = Vector2(0.5, 2.5)
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_cc37w")
