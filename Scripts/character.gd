@@ -1,25 +1,47 @@
 extends CharacterBody2D
 
-signal hit_opponent(opponent)
+signal hit_opponent(attacker, opponent)
 
 const GRAVITY := 2000.0
 const JUMP_FORCE := -200.0
 
-@export var speed: float = 150.0
+const MAX_SHIELD_ENERGY := 100.0
+const SHIELD_DRAIN := 35.0
+const SHIELD_REGEN := 25.0
+
+@export var stats: CharacterStats
 @export var is_player_1: bool
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_zone: Area2D = $AttackZone
+@onready var shield: Sprite2D = $Shield
 
 var is_attacking := false
+var is_blocking := false
+
 var attack_zone_x: float
 var has_hit := false
+
+var current_health: float
+var attack_damage: float
+var speed: float = 150.0
+
+var shield_energy := MAX_SHIELD_ENERGY
 
 var next_attack := "punch"
 
 
 func _ready() -> void:
+	if stats:
+		current_health = stats.health
+		attack_damage = stats.attack
+		speed = stats.speed
+	else:
+		push_warning("No CharacterStats assigned to %s" % name)
+
 	attack_zone_x = abs(attack_zone.position.x)
+
+	shield.hide()
 
 	sprite.animation_finished.connect(_on_animation_finished)
 	sprite.play("idle")
@@ -27,42 +49,81 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var prefix := "" if is_player_1 else "ui_"
-	var input_direction := Input.get_axis(prefix + "left", prefix + "right")
+
+	var input_direction := Input.get_axis(
+		prefix + "left",
+		prefix + "right"
+	)
+
+	# ESCUDO
+	_handle_shield(delta)
 
 	# ATAQUES
-	if not is_attacking and is_on_floor():
+	if not is_attacking and not is_blocking and is_on_floor():
 		if is_player_1:
 			if Input.is_action_just_pressed("attack_1"):
-				_start_attack(next_attack)
-			elif Input.is_action_just_pressed("block_1"):
 				_start_attack(next_attack)
 		else:
 			if Input.is_action_just_pressed("attack_2"):
 				_start_attack(next_attack)
-			elif Input.is_action_just_pressed("block_2"):
-				_start_attack(next_attack)
 
 	# SALTO
-	if Input.is_action_just_pressed(prefix + "up") and is_on_floor() and not is_attacking:
+	if Input.is_action_just_pressed(prefix + "up") \
+	and is_on_floor() \
+	and not is_attacking \
+	and not is_blocking:
 		velocity.y = JUMP_FORCE
 
 	# MOVIMIENTO
-	velocity.x = 0.0 if is_attacking else input_direction * speed
+	if is_attacking or is_blocking:
+		velocity.x = 0.0
+	else:
+		velocity.x = input_direction * speed
 
-	if !is_on_floor():
+	# GRAVEDAD
+	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
 	move_and_slide()
+
 	_update_animation(input_direction)
 
-	# Comprobar si golpeamos al oponente
+	# COMPROBAR GOLPE
 	if is_attacking and not has_hit:
 		_check_attack_hit()
+
+
+func _handle_shield(delta: float) -> void:
+	var shield_action := "block_1" if is_player_1 else "block_2"
+
+	var shield_pressed := Input.is_action_pressed(shield_action)
+
+	# Activar escudo
+	if shield_pressed and shield_energy > 0.0 and not is_attacking:
+		is_blocking = true
+		shield.show()
+
+		shield_energy -= SHIELD_DRAIN * delta
+
+		# Se quedó sin energía
+		if shield_energy <= 0.0:
+			shield_energy = 0.0
+			is_blocking = false
+			shield.hide()
+
+	else:
+		is_blocking = false
+		shield.hide()
+
+		# Regenerar energía
+		shield_energy += SHIELD_REGEN * delta
+		shield_energy = min(shield_energy, MAX_SHIELD_ENERGY)
 
 
 func _start_attack(anim: String) -> void:
 	is_attacking = true
 	has_hit = false
+
 	sprite.play(anim)
 
 
@@ -73,15 +134,19 @@ func _check_attack_hit() -> void:
 		if body == self:
 			continue
 
-		# Solo golpear al otro jugador
 		if body is CharacterBody2D:
 			if body.is_player_1 != is_player_1:
+
+				# Si el oponente tiene escudo,
+				# el ataque no hace daño.
+				if body.is_blocking:
+					has_hit = true
+					break
+
 				has_hit = true
 
-				# Avisar que golpeamos
-				hit_opponent.emit(body)
+				hit_opponent.emit(self, body)
 
-				# Cambiar el siguiente ataque
 				if next_attack == "punch":
 					next_attack = "kick"
 				else:
@@ -98,6 +163,10 @@ func _on_animation_finished() -> void:
 
 func _update_animation(dir: float) -> void:
 	if is_attacking:
+		return
+
+	if is_blocking:
+		_play("idle")
 		return
 
 	if not is_on_floor():

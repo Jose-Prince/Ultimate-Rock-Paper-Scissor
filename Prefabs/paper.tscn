@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dr4mqfs6ghhl4" path="res://Scripts/character.gd" id="1_80fc8"]
 [ext_resource type="Texture2D" uid="uid://dca2ep5r1lw30" path="res://Assets/Ultimate_rock_paper_scissors.PNG" id="2_0214c"]
+[ext_resource type="Resource" uid="uid://cv5uxbsxwojeh" path="res://Resources/Paper.tres" id="2_n6nym"]
+[ext_resource type="Texture2D" uid="uid://tflmbo1nhdpf" path="res://Assets/shield.PNG" id="4_p24y8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6nym"]
 atlas = ExtResource("2_0214c")
@@ -138,7 +140,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4x2js")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"run_right",
 "speed": 15.0
 }]
@@ -151,10 +153,11 @@ size = Vector2(6, 12)
 
 [node name="Paper" type="CharacterBody2D" unique_id=1900151938]
 script = ExtResource("1_80fc8")
+stats = ExtResource("2_n6nym")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1981511636]
 sprite_frames = SubResource("SpriteFrames_aspel")
-animation = &"run_right"
+animation = &"kick"
 speed_scale = 0.5
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=377563352]
@@ -174,3 +177,9 @@ position = Vector2(9, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=902097222]
 shape = SubResource("RectangleShape2D_0214c")
+
+[node name="Shield" type="Sprite2D" parent="." unique_id=248136678]
+visible = false
+position = Vector2(0.5, 1)
+scale = Vector2(1.0625, 1.125)
+texture = ExtResource("4_p24y8")
