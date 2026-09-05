@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://cmoikptj24u1j"]
+
+[ext_resource type="Script" uid="uid://dt1ayqbh3xd5c" path="res://character_data.gd" id="1_5p1d7"]
+[ext_resource type="Texture2D" uid="uid://dca2ep5r1lw30" path="res://Assets/Ultimate_rock_paper_scissors.PNG" id="1_f2h31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4awol"]
+atlas = ExtResource("1_f2h31")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86lwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4awol")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_5p1d7")
+frames = SubResource("SpriteFrames_86lwj")
+metadata/_custom_type_script = "uid://dt1ayqbh3xd5c"

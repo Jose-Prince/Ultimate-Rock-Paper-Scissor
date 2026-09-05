@@ -1,5 +1,10 @@
 extends Control
 
+var PORTRAITS := {
+	GameData.CHARACTERS.ROCK: preload("res://Assets/rock.tres"),
+	GameData.CHARACTERS.PAPER: preload("res://Assets/paper.tres"),
+	GameData.CHARACTERS.SCISSOR: preload("res://Assets/scissor.tres"),
+}
 @onready var label: Label = $MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/MarginContainer/Label
 @onready var label_2: Label = $MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/MarginContainer/Label2
 
@@ -86,6 +91,9 @@ func _finish_selection() -> void:
 	label.hide()
 	label_2.hide()
 
+	char_1_display.texture = _portrait(GameData.char_player_1)
+	char_2_display.texture = _portrait(GameData.char_player_2)
+	
 	# Mostrar los personajes
 	char_1_display.show()
 	char_2_display.show()
@@ -95,3 +103,14 @@ func _finish_selection() -> void:
 
 	# Cambiar a la batalla
 	get_tree().change_scene_to_file("res://Scenes/battle_screen.tscn")
+
+func _portrait(character) -> Texture2D:
+	var data = PORTRAITS.get(character)
+	if data == null or data.frames == null:
+		push_warning("Sin frames para %s" % character)
+		return null
+	var anims = data.frames.get_animation_names()
+	if anims.is_empty():
+		return null
+	var anim = "idle" if data.frames.has_animation("idle") else anims[0]
+	return data.frames.get_frame_texture(anim, 0)
