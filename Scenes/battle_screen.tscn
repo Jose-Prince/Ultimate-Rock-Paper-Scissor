@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bwa7m4uscklfl"]
+
+[ext_resource type="PackedScene" uid="uid://tandcb2ius0a" path="res://Prefabs/rock.tscn" id="1_4vnsc"]
+[ext_resource type="PackedScene" uid="uid://bayhut60dc20h" path="res://Prefabs/scissor.tscn" id="2_tjlxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
+size = Vector2(1141, 135)
+
+[node name="BattleScreen" type="Node2D" unique_id=215502406]
+
+[node name="Rock" parent="." unique_id=1900151938 instance=ExtResource("1_4vnsc")]
+position = Vector2(151, 422)
+is_player_1 = true
+
+[node name="Scissor" parent="." unique_id=30900022 instance=ExtResource("2_tjlxq")]
+position = Vector2(837, 418)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1526150712]
+position = Vector2(82, 372)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=144818655]
+position = Vector2(497, 153)
+shape = SubResource("RectangleShape2D_cc37w")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1817489884]
+offset_left = -74.0
+offset_top = 86.0
+offset_right = 1068.0
+offset_bottom = 224.0
