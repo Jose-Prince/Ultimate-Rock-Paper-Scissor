@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bayhut60dc20h"]
 
 [ext_resource type="Script" uid="uid://dr4mqfs6ghhl4" path="res://Scripts/character.gd" id="1_tulcl"]
+[ext_resource type="Resource" uid="uid://bcwhu0sqaiucm" path="res://Resources/Scissor.tres" id="2_ly3k3"]
 [ext_resource type="Texture2D" uid="uid://dca2ep5r1lw30" path="res://Assets/Ultimate_rock_paper_scissors.PNG" id="2_pw0kr"]
+[ext_resource type="Texture2D" uid="uid://tflmbo1nhdpf" path="res://Assets/shield.PNG" id="4_tiny5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ly3k3"]
 atlas = ExtResource("2_pw0kr")
@@ -145,7 +147,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tsuoi")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"run_right",
 "speed": 15.0
 }]
@@ -158,6 +160,7 @@ size = Vector2(6, 12)
 
 [node name="Scissor" type="CharacterBody2D" unique_id=1900151938]
 script = ExtResource("1_tulcl")
+stats = ExtResource("2_ly3k3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1981511636]
 sprite_frames = SubResource("SpriteFrames_y56ci")
@@ -181,3 +184,9 @@ position = Vector2(9, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1382840258]
 shape = SubResource("RectangleShape2D_pw0kr")
+
+[node name="Shield" type="Sprite2D" parent="." unique_id=461373530]
+visible = false
+position = Vector2(0.5, 1)
+scale = Vector2(1.0625, 1.125)
+texture = ExtResource("4_tiny5")

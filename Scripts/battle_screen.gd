@@ -17,7 +17,8 @@ var game_over := false
 
 @onready var health_player_1: TextureProgressBar = $HealthPlayer1
 @onready var health_player_2: TextureProgressBar = $HealthPlayer2
-
+@onready var shield_player_1: TextureProgressBar = $ShieldPlayer1
+@onready var shield_player_2: TextureProgressBar = $ShieldPlayer2
 
 func _ready() -> void:
 	winner.hide()
@@ -67,23 +68,27 @@ func _spawn_character(character, spawn: Marker2D, is_player_1: bool):
 	return instance
 
 
-func _on_player_hit(opponent) -> void:
+func _on_player_hit(attacker, opponent) -> void:
 	if game_over:
 		return
 
-	if opponent == player1:
-		health_player_1.value -= DAMAGE
+	opponent.current_health -= attacker.attack_damage
 
-		if health_player_1.value <= 0:
-			_end_game(2)
+	if opponent == player1:
+		health_player_1.value = opponent.current_health
 
 	elif opponent == player2:
-		health_player_2.value -= DAMAGE
+		health_player_2.value = opponent.current_health
 
-		if health_player_2.value <= 0:
-			_end_game(1)
+	_check_winner()
 
+func _check_winner() -> void:
+	if player1.current_health <= 0:
+		_end_game(2)
 
+	elif player2.current_health <= 0:
+		_end_game(1)
+		
 func _end_game(winning_player: int) -> void:
 	if game_over:
 		return

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dk2mhkd3o4hox" path="res://Scripts/battle_screen.gd" id="1_uiajs"]
 [ext_resource type="Texture2D" uid="uid://brs128k11q5vt" path="res://Assets/Sprites/kenney_ui-pack-space-expansion/PNG/Extra/Default/bar_shadow_square_large.png" id="3_tjlxq"]
 [ext_resource type="Texture2D" uid="uid://tl6ygywvrhv5" path="res://Assets/Sprites/kenney_ui-pack-space-expansion/PNG/Red/Default/bar_square_large.png" id="4_uiajs"]
+[ext_resource type="Texture2D" uid="uid://dtjtcor22fvn3" path="res://Assets/Sprites/kenney_ui-pack-space-expansion/PNG/Blue/Default/bar_square_gloss_small.png" id="5_guxe6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
 size = Vector2(1141, 135)
@@ -83,3 +84,25 @@ offset_right = 610.0
 offset_bottom = 426.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+
+[node name="ShieldPlayer1" type="TextureProgressBar" parent="." unique_id=1668085786]
+offset_left = 513.0
+offset_top = 404.0
+offset_right = 532.0
+offset_bottom = 408.0
+max_value = 50.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_tjlxq")
+texture_progress = ExtResource("5_guxe6")
+
+[node name="ShieldPlayer2" type="TextureProgressBar" parent="." unique_id=135989095]
+offset_left = 608.0
+offset_top = 404.0
+offset_right = 627.0
+offset_bottom = 408.0
+max_value = 50.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_tjlxq")
+texture_progress = ExtResource("5_guxe6")
