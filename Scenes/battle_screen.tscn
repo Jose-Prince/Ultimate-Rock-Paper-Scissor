@@ -75,3 +75,11 @@ value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("3_tjlxq")
 texture_progress = ExtResource("4_uiajs")
+
+[node name="Winner" type="Label" parent="." unique_id=1763706411]
+offset_left = 526.0
+offset_top = 409.0
+offset_right = 610.0
+offset_bottom = 426.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)

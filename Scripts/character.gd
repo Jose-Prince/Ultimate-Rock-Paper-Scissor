@@ -15,6 +15,8 @@ var is_attacking := false
 var attack_zone_x: float
 var has_hit := false
 
+var next_attack := "punch"
+
 
 func _ready() -> void:
 	attack_zone_x = abs(attack_zone.position.x)
@@ -31,14 +33,14 @@ func _physics_process(delta: float) -> void:
 	if not is_attacking and is_on_floor():
 		if is_player_1:
 			if Input.is_action_just_pressed("attack_1"):
-				_start_attack("punch")
+				_start_attack(next_attack)
 			elif Input.is_action_just_pressed("block_1"):
-				_start_attack("kick")
+				_start_attack(next_attack)
 		else:
 			if Input.is_action_just_pressed("attack_2"):
-				_start_attack("punch")
+				_start_attack(next_attack)
 			elif Input.is_action_just_pressed("block_2"):
-				_start_attack("kick")
+				_start_attack(next_attack)
 
 	# SALTO
 	if Input.is_action_just_pressed(prefix + "up") and is_on_floor() and not is_attacking:
@@ -75,7 +77,16 @@ func _check_attack_hit() -> void:
 		if body is CharacterBody2D:
 			if body.is_player_1 != is_player_1:
 				has_hit = true
+
+				# Avisar que golpeamos
 				hit_opponent.emit(body)
+
+				# Cambiar el siguiente ataque
+				if next_attack == "punch":
+					next_attack = "kick"
+				else:
+					next_attack = "punch"
+
 				break
 
 
