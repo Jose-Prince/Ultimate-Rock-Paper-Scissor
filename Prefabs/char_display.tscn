@@ -35,6 +35,13 @@ offset_right = 74.0
 offset_bottom = 74.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wvnlb")
 
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=295612671]
+layout_mode = 0
+offset_right = 76.0
+offset_bottom = 65.0
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Panel2" type="Panel" parent="." unique_id=1501058796]
 layout_mode = 1
 anchors_preset = -1

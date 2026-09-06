@@ -6,11 +6,37 @@
 [ext_resource type="Script" uid="uid://bf3p7x2wkf6x0" path="res://Scripts/progress_bar.gd" id="3_0qsgt"]
 [ext_resource type="Script" uid="uid://c16me5bjr25tj" path="res://Scripts/timer_count.gd" id="5_hbefg"]
 [ext_resource type="PackedScene" uid="uid://bq7xsl1nhyql3" path="res://Prefabs/char_display.tscn" id="6_v817j"]
+[ext_resource type="Texture2D" uid="uid://dca2ep5r1lw30" path="res://Assets/Ultimate_rock_paper_scissors.PNG" id="7_m0j44"]
+[ext_resource type="Texture2D" uid="uid://cjoaqq5by68xe" path="res://Assets/Special attacks.PNG" id="8_sekky"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_s1r72"]
 color = Color(1, 1, 1, 1)
 thickness = 8
 vertical = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sekky"]
+atlas = ExtResource("7_m0j44")
+region = Rect2(0, 0, 17.944458, 19.270142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt7cj"]
+atlas = ExtResource("7_m0j44")
+region = Rect2(0, 15.756302, 16.880226, 17.569199)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mo1g"]
+atlas = ExtResource("7_m0j44")
+region = Rect2(0, 83.551254, 16.76596, 14.44989)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otyr6"]
+atlas = ExtResource("8_sekky")
+region = Rect2(-0.22709656, 31.672752, 17.903625, 15.857498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wa7y"]
+atlas = ExtResource("8_sekky")
+region = Rect2(0, 17.349854, 17.676529, 16.880562)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7l5w"]
+atlas = ExtResource("7_m0j44")
+region = Rect2(0, 51.96598, 17.164993, 14.322899)
 
 [node name="CharacterScreen" type="Control" unique_id=396143955]
 layout_mode = 3
@@ -107,6 +133,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 button_text = "G"
+portrait = SubResource("AtlasTexture_sekky")
 
 [node name="PaperContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=298088702]
 layout_mode = 2
@@ -119,6 +146,7 @@ theme_override_constants/margin_left = 75
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 button_text = "H"
+portrait = SubResource("AtlasTexture_vt7cj")
 
 [node name="ScissorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=1304870902]
 layout_mode = 2
@@ -131,6 +159,7 @@ theme_override_constants/margin_left = 150
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 button_text = "J"
+portrait = SubResource("AtlasTexture_2mo1g")
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/CharSelectorContainer" unique_id=310045132]
 layout_mode = 2
@@ -164,6 +193,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 button_text = "3"
+portrait = SubResource("AtlasTexture_otyr6")
 
 [node name="PaperContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container" unique_id=2092877998]
 layout_mode = 2
@@ -177,6 +207,7 @@ theme_override_constants/margin_right = 75
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 button_text = "2"
+portrait = SubResource("AtlasTexture_0wa7y")
 
 [node name="ScissorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container" unique_id=1614317248]
 layout_mode = 2
@@ -190,6 +221,7 @@ theme_override_constants/margin_right = 150
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 button_text = "1"
+portrait = SubResource("AtlasTexture_v7l5w")
 
 [node name="Timer" type="Timer" parent="." unique_id=182637759]
 wait_time = 10.0
