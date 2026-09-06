@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dwotxur73n6wv"]
+
+[ext_resource type="Script" uid="uid://ccl24rouqtgft" path="res://Scripts/splahs_screen.gd" id="1_j240g"]
+[ext_resource type="VideoStream" uid="uid://ctkrnglmwmrcc" path="res://Assets/Videos/Splash-Screen.ogv" id="1_s1kkb"]
+
+[node name="SplahsScreen" type="Control" unique_id=504861706]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1541280857]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_s1kkb")
+autoplay = true
+expand = true
+script = ExtResource("1_j240g")

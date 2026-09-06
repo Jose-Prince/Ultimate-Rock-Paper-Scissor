@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Ultimate RPS"
-run/main_scene="uid://cgfefi7ur57h2"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+run/main_scene="uid://dwotxur73n6wv"
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -91,4 +91,4 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.38928655, 0.38928664, 0.38928658, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
