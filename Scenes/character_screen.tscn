@@ -93,6 +93,10 @@ theme_override_font_sizes/font_size = 75
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Char1Display" type="TextureRect" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/MarginContainer" unique_id=489108863]
+visible = false
+layout_mode = 2
+
 [node name="RockContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=433833362]
 layout_mode = 2
 
@@ -102,7 +106,7 @@ layout_mode = 2
 [node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/RockContainer/MarginContainer" unique_id=1668750260 instance=ExtResource("6_v817j")]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-button_text = "Z"
+button_text = "G"
 
 [node name="PaperContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=298088702]
 layout_mode = 2
@@ -114,7 +118,7 @@ theme_override_constants/margin_left = 75
 [node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/PaperContainer/MarginContainer" unique_id=1804068049 instance=ExtResource("6_v817j")]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-button_text = "X"
+button_text = "H"
 
 [node name="ScissorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container" unique_id=1304870902]
 layout_mode = 2
@@ -126,7 +130,7 @@ theme_override_constants/margin_left = 150
 [node name="CharDisplay" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player1Container/ScissorContainer/MarginContainer" unique_id=1750113989 instance=ExtResource("6_v817j")]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-button_text = "C"
+button_text = "J"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/CharSelectorContainer" unique_id=310045132]
 layout_mode = 2
@@ -144,6 +148,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 75
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Char2Display" type="TextureRect" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container/MarginContainer" unique_id=2074320737]
+visible = false
+layout_mode = 2
 
 [node name="RockContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CharSelectorContainer/Player2Container" unique_id=1373853569]
 layout_mode = 2
