@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 signal hit_opponent(opponent)
 
-const GRAVITY := 1900.0
-const JUMP_FORCE := -500.0
+const GRAVITY := 2000.0
+const JUMP_FORCE := -200.0
 
 @export var speed: float = 150.0
 @export var is_player_1: bool
