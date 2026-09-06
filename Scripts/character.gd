@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal hit_opponent(attacker, opponent)
-
+const PROJECTILE_SCENE = preload("res://Prefabs/projectile.tscn")
 const GRAVITY := 2000.0
 const JUMP_FORCE := -200.0
 
@@ -11,7 +11,7 @@ const SHIELD_REGEN := 25.0
 
 @export var stats: CharacterStats
 @export var is_player_1: bool
-
+@export var character_type: GameData.CHARACTERS
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_zone: Area2D = $AttackZone
 @onready var shield: Sprite2D = $Shield
@@ -91,7 +91,34 @@ func _physics_process(delta: float) -> void:
 	# COMPROBAR GOLPE
 	if is_attacking and not has_hit:
 		_check_attack_hit()
+		
+	# ESPECIAL
+	#if not is_attacking and not is_blocking and is_on_floor():
+		#if is_player_1:
+			#if Input.is_action_just_pressed("special_1"):
+				#_use_special()
+	#else:
+		#if Input.is_action_just_pressed("special_2"):
+			#_use_special()
 
+#func _use_special() -> void:
+	#if character_type != GameData.CHARACTERS.SCISSOR:
+		#return
+#
+	#var projectile = PROJECTILE_SCENE.instantiate()
+#
+	#projectile.attacker = self
+	#projectile.damage = attack_damage
+#
+	#if sprite.flip_h:
+		#projectile.direction = Vector2.LEFT
+	#else:
+		#projectile.direction = Vector2.RIGHT
+#
+	#get_parent().add_child(projectile)
+#
+	#projectile.global_position = global_position
+	#projectile.global_position.x += 30.0 if not sprite.flip_h else -30.0
 
 func _handle_shield(delta: float) -> void:
 	var shield_action := "block_1" if is_player_1 else "block_2"

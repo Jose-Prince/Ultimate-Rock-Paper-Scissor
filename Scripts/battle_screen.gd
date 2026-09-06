@@ -35,6 +35,18 @@ func _ready() -> void:
 		false
 	)
 
+	shield_player_1.max_value = 100.0
+	shield_player_1.value = player1.shield_energy
+
+	shield_player_2.max_value = 100.0
+	shield_player_2.value = player2.shield_energy
+
+func _physics_process(_delta: float) -> void:
+	if player1:
+		shield_player_1.value = player1.shield_energy
+
+	if player2:
+		shield_player_2.value = player2.shield_energy
 
 func _spawn_character(character, spawn: Marker2D, is_player_1: bool):
 	if character == null:
@@ -58,9 +70,9 @@ func _spawn_character(character, spawn: Marker2D, is_player_1: bool):
 	var instance = scene.instantiate()
 
 	instance.is_player_1 = is_player_1
+	instance.character_type = character
 
 	add_child(instance)
-
 	instance.global_position = spawn.global_position
 
 	instance.hit_opponent.connect(_on_player_hit)
